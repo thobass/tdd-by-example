@@ -2,7 +2,7 @@ package rocks.basset;
 
 public class Dollar {
 
-    int amount;
+    private int amount;
 
     public Dollar(int amount) {
         this.amount = amount;
@@ -16,6 +16,6 @@ public class Dollar {
     public boolean equals(Object object){
         Dollar dollar = (Dollar) object;
 
-        return amount == dollar.amount;
+        return this.amount == dollar.amount;
     }
 }

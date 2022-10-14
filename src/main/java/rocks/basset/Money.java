@@ -1,6 +1,6 @@
 package rocks.basset;
 
-public abstract class Money {
+public class Money {
 
     protected int amount;
     protected String currency;
@@ -10,7 +10,9 @@ public abstract class Money {
         this.currency = currency;
     }
 
-    protected abstract String currency();
+    public String currency(){
+        return this.currency;
+    }
 
     public static Money dollar(int amount){
         return new Dollar(amount, "USD");
@@ -25,8 +27,18 @@ public abstract class Money {
         Money money = (Money) object;
 
         return this.amount == money.amount
-                && this.getClass().equals(object.getClass());
+                && this.currency == money.currency;
     }
 
-    public abstract Money times(int multiplier);
+    @Override
+    public String toString() {
+        return "Money{" +
+                "amount=" + amount +
+                ", currency='" + currency + '\'' +
+                '}';
+    }
+
+    public Money times(int multiplier){
+        return new Money(this.amount * multiplier, this.currency);
+    }
 }
